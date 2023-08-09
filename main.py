@@ -5,6 +5,10 @@ from binance.client import Client
 from datetime import datetime, timedelta
 import time
 import talib
+import backtesting
+
+
+
 
 def APIcaller(symbol='BTCUSDT', interval=Client.KLINE_INTERVAL_1MINUTE, time=120):
     # Configurar las credenciales de la API de Binance
@@ -55,12 +59,8 @@ try:
         long_signals = crossovers_lower & oversold
         short_signals = crossovers_upper & overbought
         
-        if long_signals.iloc[-1]:
-            print("Long " + df.iloc[-1]['Timestamp'].strftime('%H:%M'))
-        elif short_signals.iloc[-1]:
-            print("Short " + df.iloc[-1]['Timestamp'].strftime('%H:%M'))
-        else: 
-            print("No operation " + df.iloc[-1]['Timestamp'].strftime('%H:%M'))
+        print(upper_band)
+        print("Funciona")
             
         # Resto del código para crear los gráficos...
             
